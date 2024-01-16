@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParticipantStudent;
 use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $userRelatedData = Pendaftar::where('user_id', Auth::id())->get();
+        $userRelatedData = ParticipantStudent::where('user_id', Auth::id())->get();
         return view('dashboard.user.status-pendaftaran', compact('userRelatedData'));
     }
 

@@ -72,26 +72,30 @@
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>
-                                        <b>Nama</b>
-                                    </th>
+                                    <th>Nama</th>
                                     <th>Asal Sekolah</th>
+                                    <th>File Raport</th>
                                     <th>Alamat</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Tanggal Lahir</th>
-                                    <th>Nilai Raport</th>
+                                    <th>Rata-rata</th>
                                     <th>Status</th>
+                                    <th>Menu</th>
                                     <th>Menu</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pendaftar as $item)
                                     <tr>
+                                        @php
+                                            $average = $item->nilai_raport_s1 + $item->nilai_raport_s2 + $item->nilai_raport_s3 + $item->nilai_raport_s4 + $item->nilai_raport_s5;
+                                        @endphp
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->asal_sekolah }}</td>
+                                        <td><a href="{{ Storage::url($item->file_raport) }}" target="_blank">File</a></td>
                                         <td>{{ $item->alamat_lengkap }}</td>
                                         <td>{{ $item->tanggal_lahir }}</td>
-                                        <td>{{ $item->nilai_raport }}</td>
+                                        <td>{{ $average / 5 }}</td>
                                         @if ($item->status == 'diproses')
                                             <td><span class="badge bg-warning">Diproses</span></td>
                                         @elseif ($item->status == 'ditolak')
@@ -100,22 +104,20 @@
                                             <td><span class="badge bg-success">Diterima</span></td>
                                         @endif
                                         <td>
-                                            <div class="container row">
-                                                <div class="col-5">
-                                                    <form method="POST"
-                                                    action="{{ url('/dashboard/admin/pendaftar/' . $item->id . '/update-status-diterima') }}">
-                                                    @csrf
-                                                    <button class="btn btn-primary btn-sm" type="submit">Terima</button>
-                                                    </form>
-                                                </div>
-                                                <div class="col-5">
-                                                    <form method="POST"
-                                                    action="{{ url('/dashboard/admin/pendaftar/' . $item->id . '/update-status-ditolak') }}">
-                                                    @csrf
-                                                    <button class="btn btn-secondary btn-sm" type="submit">Tolak</button>
-                                                    </form>
-                                                </div>
-                                            </div>
+                                            <form method="POST"
+                                                action="{{ url('/dashboard/admin/pendaftar/' . $item->id . '/update-status-diterima') }}">
+                                                @csrf
+                                                <button class="btn btn-success btn-sm" type="submit">Terima</button>
+                                            </form>
+                                            <form method="POST"
+                                                action="{{ url('/dashboard/admin/pendaftar/' . $item->id . '/update-status-ditolak') }}">
+                                                @csrf
+                                                <button class="btn btn-warning btn-sm mt-2" type="submit">Tolak</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">Edit</button>
+                                            <button class="btn btn-danger btn-sm mt-2">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach

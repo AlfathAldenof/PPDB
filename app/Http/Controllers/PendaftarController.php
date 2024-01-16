@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParticipantStudent;
 use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,10 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        $pendaftar = Pendaftar::get();
-        return view('dashboard.admin.pendaftar.list', ['pendaftar' => $pendaftar]);
+        $pendaftar = ParticipantStudent::get();
+        return view('dashboard.admin.pendaftar.list', [
+            'pendaftar' => $pendaftar,
+        ]);
     }
 
     /**
@@ -38,33 +41,25 @@ class PendaftarController extends Controller
             'alamat_lengkap' => 'required',
             'nama_orangtua' => 'required',
             'asal_sekolah' => 'required',
-            'nilai_raport' => 'required',
+            'nilai_raport_s1' => 'required',
+            'nilai_raport_s2' => 'required',
+            'nilai_raport_s3' => 'required',
+            'nilai_raport_s4' => 'required',
+            'nilai_raport_s5' => 'required',
             'file_raport' => 'mimes:pdf|file',
         ]);
         $validatedData['user_id'] = Auth::id();
         $file = $request->nama . '-' . time() . '.' .$request->file_raport->extension();
         $validatedData['file_raport'] = Storage::putFileAs('public/file-raport', $request->file_raport, $file);
 
-        Pendaftar::create( $validatedData
-            // [
-            //     'nama' => $request->nama,
-            //     'nisn' => $request->nisn,
-            //     'tanggal_lahir' => $request->tanggal_lahir,
-            //     'alamat_lengkap' => $request->alamat_lengkap,
-            //     'nama_orangtua' => $request->nama_orangtua,
-            //     'asal_sekolah' => $request->asal_sekolah,
-            //     'nilai_raport' => $request->nilai_raport,
-            //     'file_raport' => $file,
-            //     'user_id' => $userId,
-            // ]
-        );
+        ParticipantStudent::create($validatedData);
         return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pendaftar $pendaftar)
+    public function show(ParticipantStudent $pendaftar)
     {
         //
     }
@@ -72,7 +67,7 @@ class PendaftarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pendaftar $pendaftar)
+    public function edit(ParticipantStudent $pendaftar)
     {
         //
     }
@@ -80,19 +75,19 @@ class PendaftarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pendaftar $pendaftar)
+    public function update(Request $request, ParticipantStudent $pendaftar)
     {
         //
     }
 
-    public function updateStatusDiterima(Request $request, Pendaftar $pendaftar)
+    public function updateStatusDiterima(Request $request, ParticipantStudent $pendaftar)
     {   
         // $pendaftar = Pendaftar::find($request->terima_id);
         $pendaftar->update(['status' => 'diterima']);
         return redirect()->back();
     }
     
-    public function updateStatusDitolak(Request $request, Pendaftar $pendaftar)
+    public function updateStatusDitolak(Request $request, ParticipantStudent $pendaftar)
     {
         $pendaftar->update(['status' => 'ditolak']);
         return redirect()->back();
@@ -102,7 +97,7 @@ class PendaftarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pendaftar $pendaftar)
+    public function destroy(ParticipantStudent $pendaftar)
     {
         //
     }

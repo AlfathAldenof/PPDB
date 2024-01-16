@@ -35,7 +35,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login - PPDB</title>
+    <title>@yield('title') - PPDB</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -81,10 +81,10 @@
                     <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
     
                         <div class="d-flex justify-content-center py-4">
-                            <a href="{{ url('/login') }}" class="logo d-flex align-items-center w-auto">
+                            <div class="logo d-flex align-items-center w-auto">
                                 <img src="{{ asset('NiceAdmin') }}/assets/img/logo.png" alt="">
-                                <span class="d-none d-lg-block">NiceAdmin</span>
-                            </a>
+                                <span class="d-none d-lg-block">PPDB Online</span>
+                            </div>
                         </div><!-- End Logo -->
                         @yield('content')
                     </div>

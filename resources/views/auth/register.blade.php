@@ -51,6 +51,9 @@
     </form>
 </x-guest-layout> --}}
 @extends('layouts.guest')
+@section('title')
+    Register
+@endsection
 @section('content')
     <div class="card mb-3">
 

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pendaftar extends Model
+class ParticipantStudent extends Model
 {
     use HasFactory;
-    protected $table = "pendaftars";
+    protected $table = "participant_students";
     protected $guarded = [];
     protected $fillable = [
         'nama',
@@ -17,7 +17,11 @@ class Pendaftar extends Model
         'alamat_lengkap',
         'nama_orangtua',
         'asal_sekolah',
-        'nilai_raport',
+        'nilai_raport_s1',
+        'nilai_raport_s2',
+        'nilai_raport_s3',
+        'nilai_raport_s4',
+        'nilai_raport_s5',
         'file_raport',
         'status',
         'user_id',

@@ -19,23 +19,17 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::table('users')->insert([
-            'name' => 'Admin_PPDB',
+            'name' => 'Admin',
             'email' => 'admin@ppdb.ac.id',
             'password' => Hash::make('admin_ppdb'),
             'role' => 'Admin',
         ]);
         
         DB::table('users')->insert([
-            'name' => 'User_Siswa',
+            'name' => 'Siswa',
             'email' => 'siswa@ppdb.ac.id',
             'password' => Hash::make('siswa_ppdb'),
             'role' => 'User',
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

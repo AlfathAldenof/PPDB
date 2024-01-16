@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PPDB</title>
+    <title>PPDB - SMA XYZ</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -64,7 +64,7 @@
             <a href="index.html" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1>PPDB<span>.</span></h1>
+                <h1>PPDB Online<span>.</span></h1>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
@@ -207,78 +207,102 @@
                                     <form action="{{ route('pendaftar.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row mb-3">
-                                            <label for="name" class="col-sm-2 col-form-label">Nama
+                                            <label for="name" class="col-sm-4 col-form-label">Nama
                                                 Lengkap</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <input type="text" class="form-control" name="nama" required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
-                                            <div class="col-sm-10">
+                                            <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
+                                            <div class="col-sm-8">
                                                 <input type="text" class="form-control" name="nisn" required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
+                                            <label for="tanggal_lahir" class="col-sm-4 col-form-label">Tanggal
                                                 Lahir</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <input type="date" class="form-control" name="tanggal_lahir"
                                                     required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="alamat_lengkap" class="col-sm-2 col-form-label">Alamat
+                                            <label for="alamat_lengkap" class="col-sm-4 col-form-label">Alamat
                                                 Lengkap</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required></textarea>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="nama_orangtua" class="col-sm-2 col-form-label">Nama
+                                            <label for="nama_orangtua" class="col-sm-4 col-form-label">Nama
                                                 Orangtua</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <input type="text" class="form-control" name="nama_orangtua"
                                                     required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="asal_sekolah" class="col-sm-2 col-form-label">Asal
+                                            <label for="asal_sekolah" class="col-sm-4 col-form-label">Asal
                                                 Sekolah</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <input type="text" class="form-control" name="asal_sekolah"
                                                     required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-2 col-form-label">Rata-rata
-                                                Raport</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nilai_raport"
+                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 1</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" name="nilai_raport_s1"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 2</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" name="nilai_raport_s2"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 3</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" name="nilai_raport_s3"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 4</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" name="nilai_raport_s4"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 5</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" name="nilai_raport_s5"
                                                     required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="file_raport" class="col-sm-2 col-form-label">File
+                                            <label for="file_raport" class="col-sm-4 col-form-label">File
                                                 Raport</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-8">
                                                 <input class="form-control" type="file" id="formFile"
                                                     name="file_raport" required>
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Submit Button</label>
-                                            <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary">Daftar</button>
-                                            </div>
+                                        <div class="row mb-3 p-2">
+                                            <button type="submit" class="btn btn-primary">Submit Pendaftran</button>
                                         </div>
 
                                     </form><!-- End Form Pendaftaran -->
@@ -350,7 +374,7 @@
                             </p>
 
                             <div class="position-relative mt-4">
-                                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                                <img src="{{ asset('Impact') }}/assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
                                 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
                             </div>
                         </div>
