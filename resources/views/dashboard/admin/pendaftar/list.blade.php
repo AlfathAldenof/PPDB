@@ -1,18 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="pagetitle">
-        <h1>Data Tables</h1>
+        <h1>Data Pendaftar</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item">Pendaftar</li>
+                <li class="breadcrumb-item active">List Pendaftar</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
-    {{-- <!-- Modal Diterima-->
-    <div class="modal fade" id="terimaModal" tabindex="-1" aria-labelledby="terimaModalLabel" aria-hidden="true">
+    <!-- Modal Diterima-->
+    {{-- <div class="modal fade" id="terimaModal" tabindex="-1" aria-labelledby="terimaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{ url('/pendaftar/update-status/{id}') }}" method="POST" class="d-inline">
@@ -34,40 +34,22 @@
                 </form>
             </div>
         </div>
-    </div>
-
-    <!-- Modal Ditolak-->
-    <div class="modal fade" id="tolakModal" tabindex="-1" aria-labelledby="tolakModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="{{ url('/pendaftar/update-status/{id}') }}" method="POST" class="d-inline">
-                    @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title">Tolak Siswa</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="tolak_id" id="id">
-                        <p>Apakah anda yakin ingin menolak siswa Ini?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tidak, Batalkan</button>
-                        <button class="btn btn-danger" type="submit">
-                            <i class="far fa-trash-alt"></i> &nbsp; Ya, Lanjut
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div> --}}
 
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ session('message') }}
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+    @endif
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Data Pendaftar SMAN XYZ</h5>
-
+                        {{-- Data Table --}}
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -94,7 +76,7 @@
                                         <td>{{ $item->asal_sekolah }}</td>
                                         <td><a href="{{ Storage::url($item->file_raport) }}" target="_blank">File</a></td>
                                         <td>{{ $item->alamat_lengkap }}</td>
-                                        <td>{{ $item->tanggal_lahir }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($item->tanggal_lahir)) }}</td>
                                         <td>{{ $average / 5 }}</td>
                                         @if ($item->status == 'diproses')
                                             <td><span class="badge bg-warning">Diproses</span></td>
@@ -116,14 +98,20 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm">Edit</button>
-                                            <button class="btn btn-danger btn-sm mt-2">Delete</button>
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('pendaftar.edit', $item->id) }}">Edit</a>
+                                            <form action="{{ route('pendaftar.destroy', $item->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm mt-2" type="submit">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <!-- End Table with stripped rows -->
+                        {{-- End Data Table --}}
                     </div>
                 </div>
             </div>
@@ -133,22 +121,12 @@
 {{-- @push('modal-script')
     <script>
         $(document).ready(function() {
-            $(document).on('click', '.terima', function(e) {
+            $(document).on('click', '.delete', function(e) {
                 e.preventDefault();
 
                 var id = $(this).val();
                 $('#id').val(id);
-                $('#terimaModal').modal('show');
-            });
-        });
-
-        $(document).ready(function() {
-            $(document).on('click', '.tolak', function(e) {
-                e.preventDefault();
-
-                var id = $(this).val();
-                $('#id').val(id);
-                $('#tolakModal').modal('show');
+                $('#deleteModal').modal('show');
             });
         });
     </script>

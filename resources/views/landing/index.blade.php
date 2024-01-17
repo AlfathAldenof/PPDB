@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2">
-                    <img src="assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out"
+                    <img src="{{ asset('Impact') }}/assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out"
                         data-aos-delay="100">
                 </div>
             </div>
@@ -168,167 +168,186 @@
     <!-- End Hero Section -->
 
     <main id="main">
+        @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ session('message') }}
+            <button class="btn-close" type="button" data-bs-dismiss="alert"
+            aria-label="Close">
+            </button>
+        </div>
+        @endif
 
         <!-- ======= Daftar Section ======= -->
-        <section id="daftar" class="daftar">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-header">
-                    <h2>Daftar Segera</h2>
-                    <p>Daftarkan diri kamu melalui form dibawah ini!</p>
-                </div>
-
-                <div class="pagetitle">
-                    <h1>Form Pendaftaran</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#daftar">Daftar</a></li>
-                            <li class="breadcrumb-item">Home</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
-
-                @if (session('message'))
-                    <div class="alert alert-success alert-dismissible fade show">
-                        {{ session('message') }}
-                        <button class="btn-close" type="button" data-bs-dismiss="alert"
-                        aria-label="Close">
-                        </button>
-                    </div>
-                @endif
-
-                <section class="section">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Formulir Pendaftaran</h5>
-                                    <!-- Form Pendaftaran -->
-                                    <form action="{{ route('pendaftar.store') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row mb-3">
-                                            <label for="name" class="col-sm-4 col-form-label">Nama
-                                                Lengkap</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nama" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nisn" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="tanggal_lahir" class="col-sm-4 col-form-label">Tanggal
-                                                Lahir</label>
-                                            <div class="col-sm-8">
-                                                <input type="date" class="form-control" name="tanggal_lahir"
-                                                    required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="alamat_lengkap" class="col-sm-4 col-form-label">Alamat
-                                                Lengkap</label>
-                                            <div class="col-sm-8">
-                                                <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="nama_orangtua" class="col-sm-4 col-form-label">Nama
-                                                Orangtua</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nama_orangtua"
-                                                    required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="asal_sekolah" class="col-sm-4 col-form-label">Asal
-                                                Sekolah</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="asal_sekolah"
-                                                    required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 1</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nilai_raport_s1"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 2</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nilai_raport_s2"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 3</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nilai_raport_s3"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 4</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nilai_raport_s4"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 5</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="nilai_raport_s5"
-                                                    required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="file_raport" class="col-sm-4 col-form-label">File
-                                                Raport</label>
-                                            <div class="col-sm-8">
-                                                <input class="form-control" type="file" id="formFile"
-                                                    name="file_raport" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3 p-2">
-                                            <button type="submit" class="btn btn-primary">Submit Pendaftran</button>
-                                        </div>
-
-                                    </form><!-- End Form Pendaftaran -->
-                                </div>
-                            </div>
+        @if (Auth::check() && auth()->user()->role == 'User')
+            @if(auth()->user()->registered == 0)
+                <section id="daftar" class="daftar">
+                    <div class="container" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2>Daftar Segera</h2>
+                            <p>Daftarkan diri kamu melalui form dibawah ini!</p>
                         </div>
 
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Persyaratan Peserta</h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sequi earum,
-                                        voluptate nihil hic sit sunt quia, cum delectus at quis in inventore vitae
-                                        exercitationem, ea est cupiditate nam mollitia!
-                                    </p>
+                        <div class="pagetitle">
+                            <h1>Form Pendaftaran</h1>
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#daftar">Daftar</a></li>
+                                    <li class="breadcrumb-item">Home</li>
+                                </ol>
+                            </nav>
+                        </div><!-- End Page Title -->
 
+                        <section class="section">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Formulir Pendaftaran</h5>
+                                            <!-- Form Pendaftaran -->
+                                            <form action="{{ route('pendaftar.store') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="row mb-3">
+                                                    <label for="name" class="col-sm-4 col-form-label">Nama
+                                                        Lengkap</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nama" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nisn" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="tanggal_lahir" class="col-sm-4 col-form-label">Tanggal
+                                                        Lahir</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="date" class="form-control" name="tanggal_lahir"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="alamat_lengkap" class="col-sm-4 col-form-label">Alamat
+                                                        Lengkap</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="nama_orangtua" class="col-sm-4 col-form-label">Nama
+                                                        Orangtua</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nama_orangtua"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="asal_sekolah" class="col-sm-4 col-form-label">Asal
+                                                        Sekolah</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="asal_sekolah"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 1</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nilai_raport_s1"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 2</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nilai_raport_s2"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 3</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nilai_raport_s3"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 4</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nilai_raport_s4"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 5</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="nilai_raport_s5"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="file_raport" class="col-sm-4 col-form-label">File
+                                                        Raport</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control" type="file" id="formFile"
+                                                            name="file_raport" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3 p-2">
+                                                    <button type="submit" class="btn btn-primary">Submit Pendaftaran</button>
+                                                </div>
+
+                                            </form><!-- End Form Pendaftaran -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                            <h6 class="text-danger">Mohon lengkapi dan cek data anda dengan seksama!</h6>
+                                            <ol>
+                                                <li>Kesalahan dalam penginputan data atau terdapat data yang tidak sesuai dapat berupa penolakan !</li>
+                                                <li>Pemalsuan data dapat berupa blacklist dalam pendaftaran</li>
+                                            </ol>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
+                        </section>
+                    </div>
+                </section>
+            @endif
+        @else
+        <section id="daftar" class="daftar">
+            <div class="container" data-aos="fade-up">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <center>
+                                        <h5 class="card-title text-danger"> Pendaftaran Telah Dibuka!</h5>
+                                        <h6 class="text-danger">Kamu Ingin mendaftar? Buat Akun terlebih dahulu!</h6>
+                                        <a class="btn btn-primary mt-3" href="{{ route('register') }}" >Buat Akun</a>
+                                    </center>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
-        </section><!-- End About Us Section -->
-
+        </section>
+        @endif
         <!-- ======= Clients Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="zoom-out">
@@ -341,7 +360,7 @@
                 <div class="row gy-4">
                     <div class="col-lg-6">
                         <h3>Voluptatem dignissimos provident quasi corporis</h3>
-                        <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+                        <img src="{{ asset('Impact') }}/assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
                         <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat
                             debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur
                             fugiat voluptas ea.</p>

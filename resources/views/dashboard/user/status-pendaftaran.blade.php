@@ -4,7 +4,7 @@
         <h1>Profile</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item">Pendaftaran</li>
                 <li class="breadcrumb-item active">Status</li>
             </ol>
@@ -47,6 +47,18 @@
                                         <h5 class="card-title">Jadwal Pendaftaran Ulang</h5>
                                         <p class="card-text">Pendaftaran ulang <b>OFFLINE</b> pada tanggal: <br> 20 Januari
                                             2024 - 1 Februari2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @elseif ($user->status == 'ditolak')
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="card-body mt-3">
+                                        <center>
+                                            <h5 class="card-title">Tetap semangat dan Jangan Menyerah</h5>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +125,7 @@
                                     </div>
                                     <hr>
                                     <div class="row p-2">
-                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <a class="btn btn-primary btn-sm" href="#">Edit</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -146,7 +158,7 @@
                                     </div>
                                     <hr>
                                     <div class="row p-2">
-                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <a class="btn btn-primary btn-sm" href="#">Edit</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -160,7 +172,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="alert alert-warning mt-5">
-                                Pendaftaran mu belum diterima oleh Admin!
+                                <center>
+                                    Pendaftaran mu belum diterima oleh Admin!
+                                </center>
                             </div>
                         </div>
                     </div>

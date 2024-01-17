@@ -264,7 +264,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ url('profile') }}">
+                            <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-gear"></i>
                                 <span>Account Settings</span>
                             </a>
@@ -326,6 +326,6 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('NiceAdmin') }}/assets/js/main.js"></script>
-    {{-- @stack('modal-script') --}}
+    @stack('modal-script')
 </body>
 </html>

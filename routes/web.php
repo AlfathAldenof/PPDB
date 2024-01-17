@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
-use App\Models\Pendaftar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,17 +30,21 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Pendaftar
-    Route::post('/pendaftar/create', [PendaftarController::class, 'store'])->name('pendaftar.store');
+    Route::post('/pendaftar/create', [ParticipantsController::class, 'store'])->name('pendaftar.store');
 
     Route::prefix('admin')->middleware(['auth', 'role:Admin'])->group(function () {
         //Pendaftar
-        Route::get('/pendaftar', [PendaftarController::class, 'index'])->name('pendaftar');
-        Route::post('/pendaftar/{pendaftar}/update-status-diterima', [PendaftarController::class, 'updateStatusDiterima']);
-        Route::post('/pendaftar/{pendaftar}/update-status-ditolak', [PendaftarController::class, 'updateStatusDitolak']);
+        Route::get('/pendaftar', [ParticipantsController::class, 'index'])->name('pendaftar');
+        Route::post('/pendaftar/{id}/update-status-diterima', [ParticipantsController::class, 'updateStatusDiterima']);
+        Route::post('/pendaftar/{id}/update-status-ditolak', [ParticipantsController::class, 'updateStatusDitolak']);
+        Route::get('/pendaftar/{id}/edit', [ParticipantsController::class,'edit'])->name('pendaftar.edit');
+        Route::put('/pendaftar/{id}', [ParticipantsController::class,'update'])->name('pendaftar.update');
+        Route::delete('/pendaftar/{id}/delete', [ParticipantsController::class, 'destroy'])->name('pendaftar.destroy');
     });
 
     Route::prefix('siswa')->middleware(['auth', 'role:User'])->group(function () {
         Route::get('/pendaftaran/status', [SiswaController::class, 'index'])->name('siswa.status');
+        Route::get('/pendaftaran/{id}/edit', [SiswaController::class,'edit'])->name('siswa.edit');
     });
 });
 
