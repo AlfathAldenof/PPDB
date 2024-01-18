@@ -5,8 +5,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item">Pendaftar</li>
-                <li class="breadcrumb-item active">List Pendaftar</li>
+                <li class="breadcrumb-item active">Pendaftar</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -100,6 +99,8 @@
                                         <td>
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ route('pendaftar.edit', $item->id) }}">Edit</a>
+                                            <a class="btn btn-info btn-sm"
+                                                href="{{ route('pendaftar.show', $item->id) }}">Raport</a>
                                             <form action="{{ route('pendaftar.destroy', $item->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf

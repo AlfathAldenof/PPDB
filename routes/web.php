@@ -39,12 +39,14 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::post('/pendaftar/{id}/update-status-ditolak', [ParticipantsController::class, 'updateStatusDitolak']);
         Route::get('/pendaftar/{id}/edit', [ParticipantsController::class,'edit'])->name('pendaftar.edit');
         Route::put('/pendaftar/{id}', [ParticipantsController::class,'update'])->name('pendaftar.update');
+        Route::get('/pendaftar/{id}/show', [ParticipantsController::class,'show'])->name('pendaftar.show');
         Route::delete('/pendaftar/{id}/delete', [ParticipantsController::class, 'destroy'])->name('pendaftar.destroy');
     });
 
     Route::prefix('siswa')->middleware(['auth', 'role:User'])->group(function () {
         Route::get('/pendaftaran/status', [SiswaController::class, 'index'])->name('siswa.status');
         Route::get('/pendaftaran/{id}/edit', [SiswaController::class,'edit'])->name('siswa.edit');
+        Route::put('/pendaftaran/{id}', [SiswaController::class,'update'])->name('siswa.update');
     });
 });
 

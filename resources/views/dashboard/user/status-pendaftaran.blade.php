@@ -10,7 +10,13 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ session('message') }}
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+    @endif
     <section class="section profile">
         <div class="row">
             @if ($userRelatedData->count() > 0)
@@ -80,8 +86,12 @@
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Nilai
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nilai-raport">Nilai
                                     Raport</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">Raport</button>
                             </li>
                         </ul>
                         <!-- //Data Dri-->
@@ -119,18 +129,13 @@
                                         <div class="col-lg-8 col-md-8">{{ $data->asal_sekolah }}</div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 label">Nilai Raport :</div>
-                                        <div class="col-lg-8 col-md-8">{{ $data->nilai_raport_s1 }}</div>
-                                    </div>
-                                    <hr>
                                     <div class="row p-2">
-                                        <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('siswa.edit', $data->id) }}">Edit</a>
                                     </div>
                                 @endforeach
                             </div>
                             {{-- Data Raport --}}
-                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                            <div class="tab-pane fade profile-edit pt-3" id="nilai-raport">
                                 @foreach ($userRelatedData as $data)
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4 label">Nilai Raport SEMESTER 1 :</div>
@@ -158,7 +163,20 @@
                                     </div>
                                     <hr>
                                     <div class="row p-2">
-                                        <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('siswa.edit', $data->id) }}">Edit</a>
+                                    </div>
+                                @endforeach
+                            </div>
+                            {{-- Raport --}}
+                            <div class="tab-pane fade profile-edit pt-3" id="raport">
+                                @foreach ($userRelatedData as $data)
+                                    <div class="row">
+                                        <iframe src="{{ Storage::url($data->file_raport) }}" frameborder="0" height="550px" width="100%">
+                                        </iframe>
+                                    </div>
+                                    <hr>
+                                    <div class="row p-2">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('siswa.edit', $data->id) }}">Edit</a>
                                     </div>
                                 @endforeach
                             </div>

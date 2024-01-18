@@ -62,9 +62,12 @@ class ParticipantsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ParticipantStudent $pendaftar)
+    public function show($id)
     {
-        //
+        $pendaftar = ParticipantStudent::findOrFail($id);
+        return view('dashboard.admin.pendaftar.show', [
+            'pendaftar' => $pendaftar,
+        ]);
     }
 
     /**
@@ -90,12 +93,6 @@ class ParticipantsController extends Controller
             'alamat_lengkap' => 'required',
             'nama_orangtua' => 'required',
             'asal_sekolah' => 'required',
-            'nilai_raport_s1' => 'required',
-            'nilai_raport_s2' => 'required',
-            'nilai_raport_s3' => 'required',
-            'nilai_raport_s4' => 'required',
-            'nilai_raport_s5' => 'required',
-            'file_raport' => 'mimes:pdf|file',
         ]);
 
         $pendaftar = ParticipantStudent::findOrFail($id);

@@ -298,6 +298,7 @@
                                                     <div class="col-sm-8">
                                                         <input class="form-control" type="file" id="formFile"
                                                             name="file_raport" required>
+                                                        <div class="form-text">Upload PDF / Lampiran Raport Kamu</div>
                                                     </div>
                                                 </div>
 
