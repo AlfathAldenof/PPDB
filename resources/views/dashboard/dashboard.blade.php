@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
-            <li class="breadcrumb-item"><a href="{{ route('pendaftar') }}">Pendaftar</a></li>
+            {{-- <li class="breadcrumb-item"><a href="{{ route('pendaftar') }}">Pendaftar</a></li> --}}
         </ol>
     </nav>
 </div><!-- End Page Title -->
