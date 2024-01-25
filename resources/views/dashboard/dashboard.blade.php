@@ -44,7 +44,7 @@
                                 <i class="bi bi-people"></i>
                             </div>
                                 <div class="ps-3">
-                                    <h6>{{ $total }}</h6>
+                                    <h6 id="totalDaftar">{{ $total }}</h6>
                                     {{-- <span class="text-success small pt-1 fw-bold">12%</span> <span
                                         class="text-muted small pt-2 ps-1">increase</span> --}}
                                 </div>
@@ -56,7 +56,7 @@
 
                 <!-- Revenue Card -->
                 <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card revenue-card">
+                    <div class="card info-card customers-card">
 
                         {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
@@ -77,11 +77,12 @@
 
                             <div class="d-flex align-items-center">
                                 <div
-                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
+                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people"></i>
+                            </div>
+
                                 <div class="ps-3">
-                                    <h6>{{ $proses }}</h6>
+                                    <h6 id="totalProses">{{ $proses }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +93,7 @@
                 <!-- Customers Card -->
                 <div class="col-xxl-4 col-xl-12">
 
-                    <div class="card info-card customers-card">
+                    <div class="card info-card revenue-card">
 
                         {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
@@ -113,11 +114,12 @@
 
                             <div class="d-flex align-items-center">
                                 <div
-                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
+                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people"></i>
                                 </div>
+
                                 <div class="ps-3">
-                                    <h6>{{ $terima }}</h6>
+                                    <h6 id="totalTerima">{{ $terima }}</h6>
                                 </div>
                             </div>
 
@@ -151,6 +153,14 @@
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
+                                const totalDaftarElement = document.querySelector("#totalDaftar");
+                                const totalDaftarValue = parseFloat(totalDaftarElement.textContent);
+                                 // Assuming it's a number
+                                const totalTerimaElement = document.querySelector("#totalTerima");
+                                const totalTerimaValue = parseFloat(totalTerimaElement.textContent);
+                                 // Assuming it's a number
+                                const totalProsesElement = document.querySelector("#totalProses");
+                                const totalProsesValue = parseFloat(totalProsesElement.textContent); // Assuming it's a number
                                 echarts.init(document.querySelector("#trafficChart")).setOption({
                                     tooltip: {
                                         trigger: 'item'
@@ -179,16 +189,16 @@
                                             show: false
                                         },
                                         data: [{
-                                                value: 1048,
+                                                value: totalDaftarValue,
                                                 name: 'Total Pendaftar'
                                             },
                                             {
-                                                value: 735,
+                                                value: totalTerimaValue,
                                                 name: 'Pendaftar Diterima'
                                             },
                                             {
-                                                value: 580,
-                                                name: 'Pendaftar '
+                                                value: totalProsesValue,
+                                                name: 'Pendaftar Diproses'
                                             },
                                         ]
                                     }]
