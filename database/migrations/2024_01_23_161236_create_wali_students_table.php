@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('pekerjaan_wali');
             $table->string('status_wali');
             $table->string('nohp_wali');
-            $table->string('penghasilan_wali');
+            $table->double('penghasilan_wali');
             $table->timestamps();
         });
     }

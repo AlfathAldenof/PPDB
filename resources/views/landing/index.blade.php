@@ -309,7 +309,7 @@
                                                                         class="col-sm-4 col-form-label">Nilai Raport
                                                                         Semester 1</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="nilai_raport_s1" required>
                                                                     </div>
                                                                 </div>
@@ -318,7 +318,7 @@
                                                                         class="col-sm-4 col-form-label">Nilai Raport
                                                                         Semester 2</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="nilai_raport_s2" required>
                                                                     </div>
                                                                 </div>
@@ -327,7 +327,7 @@
                                                                         class="col-sm-4 col-form-label">Nilai Raport
                                                                         Semester 3</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="nilai_raport_s3" required>
                                                                     </div>
                                                                 </div>
@@ -336,7 +336,7 @@
                                                                         class="col-sm-4 col-form-label">Nilai Raport
                                                                         Semester 4</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="nilai_raport_s4" required>
                                                                     </div>
                                                                 </div>
@@ -345,7 +345,7 @@
                                                                         class="col-sm-4 col-form-label">Nilai Raport
                                                                         Semester 5</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="nilai_raport_s5" required>
                                                                     </div>
                                                                 </div>

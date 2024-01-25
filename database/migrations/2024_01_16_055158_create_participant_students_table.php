@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('alamat_lengkap');
             $table->string('nama_orangtua');
             $table->string('asal_sekolah');
-            $table->string('nilai_raport_s1');
-            $table->string('nilai_raport_s2');
-            $table->string('nilai_raport_s3');
-            $table->string('nilai_raport_s4');
-            $table->string('nilai_raport_s5');
+            $table->float('nilai_raport_s1');
+            $table->float('nilai_raport_s2');
+            $table->float('nilai_raport_s3');
+            $table->float('nilai_raport_s4');
+            $table->float('nilai_raport_s5');
             $table->string('file_raport');
             $table->string('status')->default('diproses');
             $table->timestamps();
