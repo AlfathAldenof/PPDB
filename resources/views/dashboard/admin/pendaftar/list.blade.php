@@ -100,7 +100,7 @@
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ route('pendaftar.edit', $item->id) }}">Edit</a>
                                             <a class="btn btn-info btn-sm"
-                                                href="{{ route('pendaftar.show', $item->id) }}">Raport</a>
+                                                href="{{ route('pendaftar.show', $item->id) }}">Detail</a>
                                             <form action="{{ route('pendaftar.destroy', $item->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf

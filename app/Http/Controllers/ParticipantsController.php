@@ -97,8 +97,12 @@ class ParticipantsController extends Controller
     public function show($id)
     {
         $pendaftar = ParticipantStudent::findOrFail($id);
+        $wali = WaliStudent::findOrFail($id);
+        $ijazah = IjazahStudent::findOrFail($id);
         return view('dashboard.admin.pendaftar.show', [
             'pendaftar' => $pendaftar,
+            'wali' => $wali,
+            'ijazah' => $ijazah,
         ]);
     }
 

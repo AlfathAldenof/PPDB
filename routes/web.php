@@ -4,6 +4,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
+use App\Models\ParticipantStudent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+    $terima = ParticipantStudent::where('status', 'diterima')->count();
+    $proses = ParticipantStudent::where('status', 'diproses')->count();
+    $total = ParticipantStudent::count();
+    return view('dashboard.dashboard', [
+        'terima' => $terima,
+        'proses' => $proses,
+        'total' => $total,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('dashboard')->middleware('auth')->group(function () {
