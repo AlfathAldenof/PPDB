@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IjazahStudent;
 use App\Models\ParticipantStudent;
 use App\Models\User;
+use App\Models\WaliStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,11 +55,41 @@ class ParticipantsController extends Controller
         $file = $request->nama . '-' . time() . '.' .$request->file_raport->extension();
         $validatedData['file_raport'] = Storage::putFileAs('public/file-raport', $request->file_raport, $file);
 
-        $pendaftar = ParticipantStudent::create($validatedData);
-        $user = $pendaftar->user;
+        ParticipantStudent::create($validatedData);
+        return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
+    }
+
+    public function waliStore(Request $request){
+        $validatedData = $request->validate([
+            'nama_wali' => 'required',
+            'alamat_wali' => 'required',
+            'pekerjaan_wali' => 'required',
+            'nohp_wali' => 'required',
+            'status_wali' => 'required',
+            'penghasilan_wali' => 'required',
+        ]);
+        $validatedData['user_id'] = Auth::id();
+        WaliStudent::create($validatedData);
+        return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
+    }
+
+    public function ijazahStore(Request $request){
+        $validatedData = $request->validate([
+            'pas_foto' => 'mimes:.jpeg,jpg,png,pdf|file',
+            'file_ijazah' => 'mimes:pdf|file',
+        ]);
+        $validatedData['user_id'] = Auth::id();
+        $file = $request->id . '-' . time() . '.' .$request->file_ijazah->extension();
+        $validatedData['file_ijazah'] = Storage::putFileAs('public/file-ijazah', $request->file_ijazah, $file);
+        $foto = $request->id . '-' . time() . '.' .$request->pas_foto->extension();
+        $validatedData['pas_foto'] = Storage::putFileAs('public/file-foto', $request->pas_foto, $foto);
+
+        $ijazah = IjazahStudent::create($validatedData);
+        $user = $ijazah->user;
         $user->update(['registered' => true]);
         return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
     }
+
 
     /**
      * Display the specified resource.
