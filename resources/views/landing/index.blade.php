@@ -61,19 +61,19 @@
     <header id="header" class="header d-flex align-items-center">
 
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{{ url('/') }}" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
                 <h1>PPDB Online<span>.</span></h1>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    {{-- <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#team">Team</a></li> --}}
+                    {{-- <li><a href="#contact">Contact</a></li> --}}
                     @if (Route::has('login'))
                         @auth
                             <li>
@@ -284,7 +284,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="row mb-3">
+                                                                {{-- <div class="row mb-3">
                                                                     <label for="nama_orangtua"
                                                                         class="col-sm-4 col-form-label">Nama
                                                                         Orangtua</label>
@@ -292,7 +292,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="nama_orangtua" required>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
 
                                                                 <div class="row mb-3">
                                                                     <label for="asal_sekolah"
@@ -306,7 +306,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="nilai_raport"
-                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        class="col-sm-4 col-form-label">Nilai Rapor
                                                                         Semester 1</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="number" class="form-control"
@@ -315,7 +315,7 @@
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <label for="nilai_raport"
-                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        class="col-sm-4 col-form-label">Nilai Rapor
                                                                         Semester 2</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="number" class="form-control"
@@ -324,7 +324,7 @@
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <label for="nilai_raport"
-                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        class="col-sm-4 col-form-label">Nilai Rapor
                                                                         Semester 3</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="number" class="form-control"
@@ -333,7 +333,7 @@
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <label for="nilai_raport"
-                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        class="col-sm-4 col-form-label">Nilai Rapor
                                                                         Semester 4</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="number" class="form-control"
@@ -342,7 +342,7 @@
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <label for="nilai_raport"
-                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        class="col-sm-4 col-form-label">Nilai Rapor
                                                                         Semester 5</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="number" class="form-control"
@@ -353,13 +353,13 @@
                                                                 <div class="row mb-3">
                                                                     <label for="file_raport"
                                                                         class="col-sm-4 col-form-label">File
-                                                                        Raport</label>
+                                                                        Rapor</label>
                                                                     <div class="col-sm-8">
                                                                         <input class="form-control" type="file"
                                                                             id="formFile" name="file_raport"
                                                                             required>
                                                                         <div class="form-text">Upload PDF / Lampiran
-                                                                            Raport Kamu</div>
+                                                                            Rapor Kamu</div>
                                                                     </div>
                                                                 </div>
 
@@ -441,7 +441,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row mb-3">
+                                                            {{-- <div class="row mb-3">
                                                                 <label for="nama_orangtua"
                                                                     class="col-sm-4 col-form-label">Nama
                                                                     Orangtua</label>
@@ -449,7 +449,7 @@
                                                                     <input type="text" value="{{ $item->nama_orangtua }}" class="form-control"
                                                                         name="nama_orangtua" required>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                             <div class="row mb-3">
                                                                 <label for="asal_sekolah"
@@ -633,8 +633,16 @@
                                                                         class="col-sm-4 col-form-label">Status
                                                                         OrangTua/Wali</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
-                                                                            name="status_wali" required>
+                                                                        <select name="status_wali" class="form-control" required>
+                                                                            <option value="Hidup"
+                                                                                >Masih Hidup
+                                                                            </option>
+                                                                            <option value="Meninggal"
+                                                                                >Meninggal
+                                                                            </option>
+                                                                        </select>
+                                                                        {{-- <input type="text" class="form-control"
+                                                                            name="status_wali" required> --}}
                                                                     </div>
                                                                 </div>
 
@@ -882,56 +890,40 @@
         <section id="about" class="about">
             <div class="container" data-aos="zoom-out">
                 <div class="section-header">
-                    <h2>About Us</h2>
-                    <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat
-                        sunt id nobis omnis tiledo stran delop</p>
+                    <h2>Tentang Kami</h2>
+                    {{-- <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat
+                        sunt id nobis omnis tiledo stran delop</p> --}}
                 </div>
 
                 <div class="row gy-4">
                     <div class="col-lg-6">
-                        <h3>Voluptatem dignissimos provident quasi corporis</h3>
-                        <img src="{{ asset('Impact') }}/assets/img/about.jpg" class="img-fluid rounded-4 mb-4"
+                        <h3>SMA N 2 Pasaman, Kabupaten Pasaman Barat</h3>
+                        <img src="{{ asset('Impact') }}/assets/img/gambar2.jpg" class="img-fluid rounded-4 mb-4"
                             alt="">
-                        <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat
-                            debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur
-                            fugiat voluptas ea.</p>
-                        <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo
-                            officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut
-                            ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut
-                            omnis beatae neque deleniti repellendus.</p>
+                        <p>SMA N 2 Pasaman adalah sebuah lembaga sekolah SMA negeri yang berlokasi di Batang Toman, Kab. Pasaman Barat..</p>
+                        
                     </div>
                     <div class="col-lg-6">
                         <div class="content ps-0 ps-lg-5">
-                            <p class="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
-                                magna aliqua.
-                            </p>
-                            <ul>
-                                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in
-                                    voluptate velit.</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                    storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                            </ul>
+                            <p>SMA negeri ini berdiri sejak 2013. Saat ini SMA N 2 Pasaman masih menggunakan program kurikulum belajar SMA 2013 MIPA. SMA N 2 Pasaman dipimpin oleh seorang kepala sekolah yang bernama Gustirizal dan operator sekolah Trio Putra.</p>
+                            <h4>
+                                <b>
+                                    Akreditasi SMA N 2 Pasaman
+                                </b>
+                            </h4>
                             <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident
+                                SMA N 2 Pasaman memiliki akreditasi grade A dengan nilai (akreditasi tahun 2020) dari BAN-S/M (Badan Akreditasi Nasional) Sekolah/Madrasah.
                             </p>
 
                             <div class="position-relative mt-4">
-                                <img src="{{ asset('Impact') }}/assets/img/about-2.jpg" class="img-fluid rounded-4"
+                                <img src="{{ asset('Impact') }}/assets/img/gambar3.jpg" class="img-fluid rounded-4"
                                     alt="">
-                                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+                                {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="clients-slider swiper">
+                {{-- <div class="clients-slider swiper">
                     <div class="swiper-wrapper align-items-center">
                         <div class="swiper-slide"><img src="{{ asset('Impact') }}/assets/img/clients/client-1.png"
                                 class="img-fluid" alt=""></div>
@@ -950,12 +942,12 @@
                         <div class="swiper-slide"><img src="{{ asset('Impact') }}/assets/img/clients/client-8.png"
                                 class="img-fluid" alt=""></div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </section><!-- End Clients Section -->
 
-        <!-- ======= Stats Counter Section ======= -->
+        {{-- <!-- ======= Stats Counter Section ======= -->
         <section id="stats-counter" class="stats-counter">
             <div class="container" data-aos="fade-up">
 
@@ -990,9 +982,9 @@
                 </div>
 
             </div>
-        </section><!-- End Stats Counter Section -->
+        </section><!-- End Stats Counter Section --> --}}
 
-        <!-- ======= Call To Action Section ======= -->
+        {{-- <!-- ======= Call To Action Section ======= -->
         <section id="call-to-action" class="call-to-action">
             <div class="container text-center" data-aos="zoom-out">
                 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
@@ -1002,9 +994,9 @@
                     anim id est laborum.</p>
                 <a class="cta-btn" href="#">Call To Action</a>
             </div>
-        </section><!-- End Call To Action Section -->
+        </section><!-- End Call To Action Section --> --}}
 
-        <!-- ======= Our Services Section ======= -->
+        {{-- <!-- ======= Our Services Section ======= -->
         <section id="services" class="services sections-bg">
             <div class="container" data-aos="fade-up">
 
@@ -1097,9 +1089,9 @@
                 </div>
 
             </div>
-        </section><!-- End Our Services Section -->
+        </section><!-- End Our Services Section --> --}}
 
-        <!-- ======= Testimonials Section ======= -->
+        {{-- <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
             <div class="container" data-aos="fade-up">
 
@@ -1252,9 +1244,9 @@
                 </div>
 
             </div>
-        </section><!-- End Testimonials Section -->
+        </section><!-- End Testimonials Section --> --}}
 
-        <!-- ======= Portfolio Section ======= -->
+        {{-- <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio sections-bg">
             <div class="container" data-aos="fade-up">
 
@@ -1440,9 +1432,9 @@
                 </div>
 
             </div>
-        </section><!-- End Portfolio Section -->
+        </section><!-- End Portfolio Section --> --}}
 
-        <!-- ======= Our Team Section ======= -->
+        {{-- <!-- ======= Our Team Section ======= -->
         <section id="team" class="team">
             <div class="container" data-aos="fade-up">
 
@@ -1517,9 +1509,9 @@
                 </div>
 
             </div>
-        </section><!-- End Our Team Section -->
+        </section><!-- End Our Team Section --> --}}
 
-        <!-- ======= Pricing Section ======= -->
+        {{-- <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing sections-bg">
             <div class="container" data-aos="fade-up">
 
@@ -1591,7 +1583,7 @@
                 </div>
 
             </div>
-        </section><!-- End Pricing Section -->
+        </section><!-- End Pricing Section --> --}}
 
         <!-- ======= Frequently Asked Questions Section ======= -->
         <section id="faq" class="faq">
@@ -1601,10 +1593,9 @@
 
                     <div class="col-lg-4">
                         <div class="content px-xl-5">
-                            <h3>Frequently Asked <strong>Questions</strong></h3>
+                            <h3><strong>Pertanyaan</strong> yang Sering Diajukan ?</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                                PPDB Online SMAN 2 PASAMAN
                             </p>
                         </div>
                     </div>
@@ -1619,15 +1610,13 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq-content-1">
                                         <span class="num">1.</span>
-                                        Non consectetur a erat nam at lectus urna duis?
+                                        Jika ada permasalahan, kemana harus disampaikan?
                                     </button>
                                 </h3>
                                 <div id="faq-content-1" class="accordion-collapse collapse"
                                     data-bs-parent="#faqlist">
                                     <div class="accordion-body">
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus
-                                        laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor
-                                        rhoncus dolor purus non.
+                                        Pengaduan dapat disampaikan secara bertahap melalui kontak yang tersedia, dapat juga ke lokasi Sekolah tergantung jenis permasalahannya.
                                     </div>
                                 </div>
                             </div><!-- # Faq item-->
@@ -1637,16 +1626,16 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq-content-2">
                                         <span class="num">2.</span>
-                                        Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                                        Apa saja dokumen yang harus disiapkan?
                                     </button>
                                 </h3>
                                 <div id="faq-content-2" class="accordion-collapse collapse"
                                     data-bs-parent="#faqlist">
                                     <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                        1. Ijazah/Surat Keterangan Lulus <br>
+                                        2. Akta Kelahiran/Surat Keterangan Lahir  <br>
+                                        3. Kartu Keluarga (minimal satu tahun)  <br>
+                                        4. Buku Rapor (semester 1 s.d. 5)  <br>
                                     </div>
                                 </div>
                             </div><!-- # Faq item-->
@@ -1656,58 +1645,16 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq-content-3">
                                         <span class="num">3.</span>
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                                        Apa Perbedaan PPDB Tahun ini dan Tahun Sebelumnya?
                                     </button>
                                 </h3>
                                 <div id="faq-content-3" class="accordion-collapse collapse"
                                     data-bs-parent="#faqlist">
                                     <div class="accordion-body">
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci.
-                                        Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl
-                                        suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis
-                                        convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                        Secara umum, dari regulasi tidak banyak perubahan.
                                     </div>
                                 </div>
                             </div><!-- # Faq item-->
-
-                            <div class="accordion-item">
-                                <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                                        <span class="num">4.</span>
-                                        Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                                    </button>
-                                </h3>
-                                <div id="faq-content-4" class="accordion-collapse collapse"
-                                    data-bs-parent="#faqlist">
-                                    <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                    </div>
-                                </div>
-                            </div><!-- # Faq item-->
-
-                            <div class="accordion-item">
-                                <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                                        <span class="num">5.</span>
-                                        Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                                    </button>
-                                </h3>
-                                <div id="faq-content-5" class="accordion-collapse collapse"
-                                    data-bs-parent="#faqlist">
-                                    <div class="accordion-body">
-                                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim
-                                        suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan.
-                                        Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit
-                                        turpis cursus in
-                                    </div>
-                                </div>
-                            </div><!-- # Faq item-->
-
                         </div>
 
                     </div>
@@ -1716,7 +1663,7 @@
             </div>
         </section><!-- End Frequently Asked Questions Section -->
 
-        <!-- ======= Recent Blog Posts Section ======= -->
+        {{-- <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-posts" class="recent-posts sections-bg">
             <div class="container" data-aos="fade-up">
 
@@ -1816,9 +1763,9 @@
                 </div><!-- End recent posts list -->
 
             </div>
-        </section><!-- End Recent Blog Posts Section -->
+        </section><!-- End Recent Blog Posts Section --> --}}
 
-        <!-- ======= Contact Section ======= -->
+        {{-- <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
 
@@ -1837,7 +1784,7 @@
                                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                                 <div>
                                     <h4>Location:</h4>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <p>Lingkuang Aua, Kec. Pasaman, Kabupaten Pasaman Barat, Sumatera Barat.</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -1845,7 +1792,7 @@
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
                                     <h4>Email:</h4>
-                                    <p>info@example.com</p>
+                                    <p>infosman2pasaman@ppdb.ac.id</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -1861,7 +1808,7 @@
                                 <i class="bi bi-clock flex-shrink-0"></i>
                                 <div>
                                     <h4>Open Hours:</h4>
-                                    <p>Mon-Sat: 11AM - 23PM</p>
+                                    <p>Mon-Sat: 08AM - 23PM</p>
                                 </div>
                             </div><!-- End Info Item -->
                         </div>
@@ -1899,7 +1846,7 @@
                 </div>
 
             </div>
-        </section><!-- End Contact Section -->
+        </section><!-- End Contact Section --> --}}
 
     </main><!-- End #main -->
 
@@ -1909,20 +1856,13 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-info">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <span>Impact</span>
+                    <a href="{{ url('/') }}" class="logo d-flex align-items-center">
+                        <span>PPDB SMAN 2 PASAMAN</span>
                     </a>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
-                        valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-                    <div class="social-links d-flex mt-4">
-                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                    </div>
+                    <h5>Daftarkan diri mu sekarang!</h5>
                 </div>
 
-                <div class="col-lg-2 col-6 footer-links">
+                {{-- <div class="col-lg-2 col-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
                         <li><a href="#">Home</a></li>
@@ -1931,27 +1871,27 @@
                         <li><a href="#">Terms of service</a></li>
                         <li><a href="#">Privacy policy</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
-                <div class="col-lg-2 col-6 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
+                <div class="col-lg-4 col-6 footer-links">
+                    <h4>Lokasi</h4>
+                    <p>
+                        Lingkuang Aua, Kec. Pasaman, Kabupaten Pasaman Barat, Sumatera Barat 26566
+                    </p>
+                    {{-- <ul>
                         <li><a href="#">Web Design</a></li>
                         <li><a href="#">Web Development</a></li>
                         <li><a href="#">Product Management</a></li>
                         <li><a href="#">Marketing</a></li>
                         <li><a href="#">Graphic Design</a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
 
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                    <h4>Contact Us</h4>
+                    <h4>Kontak</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        <strong>Phone:</strong> 0812XXXXXXXX<br>
+                        <strong>Email:</strong> info@ppdb.ac.id<br>
                     </p>
 
                 </div>
@@ -1961,14 +1901,7 @@
 
         <div class="container mt-4">
             <div class="copyright">
-                &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                &copy; Copyright <strong><span>PPDB SMAN 2 PASAMAN</span></strong>. All Rights Reserved
             </div>
         </div>
 

@@ -15,7 +15,6 @@ class ParticipantStudent extends Model
         'nisn',
         'tanggal_lahir',
         'alamat_lengkap',
-        'nama_orangtua',
         'asal_sekolah',
         'nilai_raport_s1',
         'nilai_raport_s2',

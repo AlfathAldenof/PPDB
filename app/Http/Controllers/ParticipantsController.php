@@ -42,7 +42,6 @@ class ParticipantsController extends Controller
             'nisn' => 'required',
             'tanggal_lahir' => 'required',
             'alamat_lengkap' => 'required',
-            'nama_orangtua' => 'required',
             'asal_sekolah' => 'required',
             'nilai_raport_s1' => 'required',
             'nilai_raport_s2' => 'required',
@@ -56,7 +55,7 @@ class ParticipantsController extends Controller
         $validatedData['file_raport'] = Storage::putFileAs('public/file-raport', $request->file_raport, $file);
 
         ParticipantStudent::create($validatedData);
-        return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
+        return redirect()->back()->with('message', 'Sukses! Data Biodata kamu telah diterima oleh admin, lanjut isi data wali!');
     }
 
     public function waliStore(Request $request){
@@ -70,7 +69,7 @@ class ParticipantsController extends Controller
         ]);
         $validatedData['user_id'] = Auth::id();
         WaliStudent::create($validatedData);
-        return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
+        return redirect()->back()->with('message', 'Sukses! Data Wali kamu telah diterima oleh admin, lanjut isi data pas foto & ijazah!');
     }
 
     public function ijazahStore(Request $request){
@@ -85,9 +84,13 @@ class ParticipantsController extends Controller
         $validatedData['pas_foto'] = Storage::putFileAs('public/file-foto', $request->pas_foto, $foto);
 
         $ijazah = IjazahStudent::create($validatedData);
+        if(Auth::user()->waliStudent == null or Auth::user()->participantStudent == null ){
+            return back()->with('message', 'Silahkan isi data wali terlebih dahulu!');    
+        }
+
         $user = $ijazah->user;
         $user->update(['registered' => true]);
-        return redirect()->back()->with('message', 'Sukses! Pendaftaran mu telah diterima oleh admin!');
+        return redirect()->back()->with('message', 'Sukses! Semua data pendaftaran mu telah diterima oleh admin, cek status pendaftaran!');
     }
 
 

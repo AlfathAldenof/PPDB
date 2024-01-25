@@ -88,11 +88,11 @@
 
                                 <li class="nav-item">
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nilai-raport">Nilai
-                                        Raport</button>
+                                        Rapor</button>
                                 </li>
 
                                 <li class="nav-item">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">Raport</button>
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">Rapor</button>
                                 </li>
 
                                 <li class="nav-item">
@@ -131,11 +131,6 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 label">Alamat Lengkap :</div>
                                             <div class="col-lg-8 col-md-8">{{ $data->alamat_lengkap }}</div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 label">Nama Orang Tua :</div>
-                                            <div class="col-lg-8 col-md-8">{{ $data->nama_orangtua }}</div>
                                         </div>
                                         <hr>
                                         <div class="row">

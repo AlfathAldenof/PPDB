@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nisn');
             $table->string('tanggal_lahir');
             $table->string('alamat_lengkap');
-            $table->string('nama_orangtua');
             $table->string('asal_sekolah');
             $table->float('nilai_raport_s1');
             $table->float('nilai_raport_s2');

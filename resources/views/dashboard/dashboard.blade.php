@@ -14,14 +14,14 @@
     <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="row">
 
                 <!-- Sales Card -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card sales-card">
 
-                        <div class="filter">
+                        {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                     class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -33,7 +33,7 @@
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="card-body">
                             <h5 class="card-title">Pendaftar <span>| Total</span></h5>
@@ -58,7 +58,7 @@
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card revenue-card">
 
-                        <div class="filter">
+                        {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                     class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -70,7 +70,7 @@
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="card-body">
                             <h5 class="card-title">Pendaftar <span>| Diproses</span></h5>
@@ -94,7 +94,7 @@
 
                     <div class="card info-card customers-card">
 
-                        <div class="filter">
+                        {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                     class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -106,7 +106,7 @@
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="card-body">
                             <h5 class="card-title">Pendaftar <span>| Diterima</span></h5>
@@ -128,26 +128,78 @@
 
                 <!-- Reports -->
                 <div class="col-12">
-                    <div class="card">
+                                        <!-- Website Traffic -->
+                <div class="card">
+                    {{-- <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li class="dropdown-header text-start">
+                                <h6>Filter</h6>
+                            </li>
 
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                    class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
+                            <li><a class="dropdown-item" href="#">Today</a></li>
+                            <li><a class="dropdown-item" href="#">This Month</a></li>
+                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                    </div> --}}
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div>
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Website Traffic <span>| Today</span></h5>
 
-                        <div class="card-body">
-                            <h5 class="card-title">Reports <span>/Today</span></h5>
+                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
-                            <!-- Line Chart -->
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                echarts.init(document.querySelector("#trafficChart")).setOption({
+                                    tooltip: {
+                                        trigger: 'item'
+                                    },
+                                    legend: {
+                                        top: '5%',
+                                        left: 'center'
+                                    },
+                                    series: [{
+                                        name: 'Access From',
+                                        type: 'pie',
+                                        radius: ['40%', '70%'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: true,
+                                                fontSize: '18',
+                                                fontWeight: 'bold'
+                                            }
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        },
+                                        data: [{
+                                                value: 1048,
+                                                name: 'Total Pendaftar'
+                                            },
+                                            {
+                                                value: 735,
+                                                name: 'Pendaftar Diterima'
+                                            },
+                                            {
+                                                value: 580,
+                                                name: 'Pendaftar '
+                                            },
+                                        ]
+                                    }]
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </div><!-- End Website Traffic -->
+
+                            {{-- <!-- Line Chart -->
                             <div id="reportsChart"></div>
 
                             <script>
@@ -206,7 +258,7 @@
                                     }).render();
                                 });
                             </script>
-                            <!-- End Line Chart -->
+                            <!-- End Line Chart --> --}}
 
                         </div>
 
@@ -217,7 +269,7 @@
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
-                        <div class="filter">
+                        {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                     class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -229,9 +281,9 @@
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
-                        <div class="card-body">
+                        {{-- <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
 
                             <table class="table table-borderless datatable">
@@ -288,12 +340,12 @@
                                 </tbody>
                             </table>
 
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div><!-- End Recent Sales -->
 
-                <!-- Top Selling -->
+                {{-- <!-- Top Selling -->
                 <div class="col-12">
                     <div class="card top-selling overflow-auto">
 
@@ -376,7 +428,7 @@
                         </div>
 
                     </div>
-                </div><!-- End Top Selling -->
+                </div><!-- End Top Selling --> --}}
 
             </div>
         </div><!-- End Left side columns -->
@@ -384,7 +436,7 @@
         <!-- Right side columns -->
         <div class="col-lg-4">
 
-            <!-- Recent Activity -->
+            {{-- <!-- Recent Activity -->
             <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
@@ -458,9 +510,9 @@
                     </div>
 
                 </div>
-            </div><!-- End Recent Activity -->
+            </div><!-- End Recent Activity --> --}}
 
-            <!-- Budget Report -->
+            {{-- <!-- Budget Report -->
             <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
@@ -533,89 +585,10 @@
                     </script>
 
                 </div>
-            </div><!-- End Budget Report -->
-
-            <!-- Website Traffic -->
-            <div class="card">
-                <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                            class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                        </li>
-
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                    <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-                    <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-                    <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            echarts.init(document.querySelector("#trafficChart")).setOption({
-                                tooltip: {
-                                    trigger: 'item'
-                                },
-                                legend: {
-                                    top: '5%',
-                                    left: 'center'
-                                },
-                                series: [{
-                                    name: 'Access From',
-                                    type: 'pie',
-                                    radius: ['40%', '70%'],
-                                    avoidLabelOverlap: false,
-                                    label: {
-                                        show: false,
-                                        position: 'center'
-                                    },
-                                    emphasis: {
-                                        label: {
-                                            show: true,
-                                            fontSize: '18',
-                                            fontWeight: 'bold'
-                                        }
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    },
-                                    data: [{
-                                            value: 1048,
-                                            name: 'Search Engine'
-                                        },
-                                        {
-                                            value: 735,
-                                            name: 'Direct'
-                                        },
-                                        {
-                                            value: 580,
-                                            name: 'Email'
-                                        },
-                                        {
-                                            value: 484,
-                                            name: 'Union Ads'
-                                        },
-                                        {
-                                            value: 300,
-                                            name: 'Video Ads'
-                                        }
-                                    ]
-                                }]
-                            });
-                        });
-                    </script>
-
-                </div>
-            </div><!-- End Website Traffic -->
+            </div><!-- End Budget Report --> --}}
 
             <!-- News & Updates Traffic -->
-            <div class="card">
+            {{-- <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
                             class="bi bi-three-dots"></i></a>
@@ -628,7 +601,7 @@
                         <li><a class="dropdown-item" href="#">This Month</a></li>
                         <li><a class="dropdown-item" href="#">This Year</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 {{-- <div class="card-body pb-0">
                     <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
@@ -671,9 +644,9 @@
                     </div><!-- End sidebar recent posts-->
 
                 </div> --}}
-            </div><!-- End News & Updates -->
+            {{-- </div><!-- End News & Updates --> --}}
 
-        </div><!-- End Right side columns -->
+        {{-- </div><!-- End Right side columns --> --}}
 
     </div>
 </section>

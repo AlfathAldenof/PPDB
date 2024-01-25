@@ -80,13 +80,13 @@
             </div>
 
             <!-- Remember Me -->
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="remember"
                         value="true" id="remember_me">
                     <label class="form-check-label" for="remember_me">Remember me</label>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-12">
                 <button class="btn btn-primary w-100" type="submit">Login</button>
@@ -97,13 +97,13 @@
                         href="{{ url('/register') }}">Create an account</a></p>
             </div>
     
-            <div class="flex items-center justify-end mt-4">
+            {{-- <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-            </div>
+            </div> --}}
         </form>
     </div>
 </div>
