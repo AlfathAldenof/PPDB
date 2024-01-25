@@ -20,10 +20,6 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
-Route::get('/', function () {
-    return view('landing.index');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
