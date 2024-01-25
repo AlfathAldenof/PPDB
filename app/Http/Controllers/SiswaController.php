@@ -77,7 +77,6 @@ class SiswaController extends Controller
             'nilai_raport_s5' => 'required',
             'file_raport' => 'mimes:pdf|file',
         ]);
-        
         if($request->file('file_raport')){
             $file = $request->nama . '-' . time() . '.' .$request->file_raport->extension();
             $validatedData['file_raport'] = Storage::putFileAs('public/file-raport', $request->file_raport, $file);
@@ -89,9 +88,7 @@ class SiswaController extends Controller
             ParticipantStudent::where('id', $id)->update($validatedData);
         }
 
-        return redirect()
-        ->route('siswa.status')
-        ->with('message', 'Sukses! Data Kamu Berhasil Diubah');
+        return back()->with('message', 'Sukses! Data Kamu Berhasil Diubah');
     }
 
     /**

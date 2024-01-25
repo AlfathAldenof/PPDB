@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function waliStudent()
+    {
+        return $this->hasOne(WaliStudent::class);
+    }
+
+    public function participantStudent()
+    {
+        return $this->hasOne(ParticipantStudent::class);
+    }
 }

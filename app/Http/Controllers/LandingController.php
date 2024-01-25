@@ -16,13 +16,23 @@ class LandingController extends Controller
     public function index()
     {
         $datadiri = ParticipantStudent::where('user_id', Auth::id())->get();
+        $item = ParticipantStudent::with('user')->where('user_id', Auth::id())->first();
         $wali = WaliStudent::where('user_id', Auth::id())->get();
         $ijazah = IjazahStudent::where('user_id', Auth::id())->get();
         return view('landing.index', [
             'datadiri' => $datadiri,
+            'item' => $item,
             'wali' => $wali,
             'ijazah' => $ijazah,
         ]);
+    }
+
+    public function updateWali(Request $request, $id)
+    {
+        $data = $request->all();
+        $item = WaliStudent::find($id);
+        $item->update($data);
+        return back()->with('message', 'SUKSES');
     }
 
     /**
