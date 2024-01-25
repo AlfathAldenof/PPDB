@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.index');
-});
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
@@ -31,6 +30,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     //Pendaftar
     Route::post('/pendaftar/create', [ParticipantsController::class, 'store'])->name('pendaftar.store');
+    Route::post('/pendaftar/create-wali', [ParticipantsController::class, 'waliStore'])->name('wali.store');
+    Route::post('/pendaftar/create-ijazah', [ParticipantsController::class, 'ijazahStore'])->name('ijazah.store');
 
     Route::prefix('admin')->middleware(['auth', 'role:Admin'])->group(function () {
         //Pendaftar

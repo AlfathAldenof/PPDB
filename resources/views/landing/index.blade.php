@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PPDB - SMA XYZ</title>
+    <title>PPDB - SMAN 2 PASAMAN</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -42,7 +42,7 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <section id="topbar" class="topbar d-flex align-items-center">
+    {{-- <section id="topbar" class="topbar d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope d-flex align-items-center"><a
@@ -56,7 +56,7 @@
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
             </div>
         </div>
-    </section><!-- End Top Bar -->
+    </section><!-- End Top Bar --> --}}
 
     <header id="header" class="header d-flex align-items-center">
 
@@ -108,40 +108,40 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero">
         <div class="container position-relative">
-            <div class="row gy-5" data-aos="fade-in">
+            <div class="row gy-5 mb-5" data-aos="fade-in">
                 <div
                     class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-                    <h2>Welcome to <span>PPDB SMAN XYZ</span></h2>
-                    <p>Penerimaan Peserta Didik Baru</p>
+                    <h2>Welcome to <span>PPDB SMAN 2 PASAMAN</span></h2>
+                    <p>Penerimaan Peserta Didik Baru Tahun 2023/2024</p>
                     <div class="d-flex justify-content-center justify-content-lg-start">
                         <a href="#daftar" class="btn-get-started">Daftar</a>
-                        <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+                        {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                             class="glightbox btn-watch-video d-flex align-items-center"><i
-                                class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                                class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2">
-                    <img src="{{ asset('Impact') }}/assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out"
-                        data-aos-delay="100">
+                    <img src="{{ asset('Impact') }}/assets/img/hero-img.svg" class="img-fluid" alt=""
+                        data-aos="zoom-out" data-aos-delay="100">
                 </div>
             </div>
         </div>
 
-        <div class="icon-boxes position-relative">
+        {{-- <div class="icon-boxes position-relative">
             <div class="container position-relative">
                 <div class="row gy-4 mt-5">
 
                     <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-easel"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+                            <h4 class="title"><a href="" class="stretched-link">Total Pendaftar</a></h4>
                         </div>
                     </div><!--End Icon Box -->
 
                     <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-gem"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link">Sed ut perspiciatis</a></h4>
+                            <h4 class="title"><a href="" class="stretched-link">Total User</a></h4>
                         </div>
                     </div><!--End Icon Box -->
 
@@ -161,194 +161,471 @@
 
                 </div>
             </div>
-        </div>
-
-        </div>
+        </div> --}}
     </section>
     <!-- End Hero Section -->
 
     <main id="main">
-        @if (session('message'))
-        <div class="alert alert-success alert-dismissible fade show">
-            {{ session('message') }}
-            <button class="btn-close" type="button" data-bs-dismiss="alert"
-            aria-label="Close">
-            </button>
-        </div>
-        @endif
-
         <!-- ======= Daftar Section ======= -->
-        @if (Auth::check() && auth()->user()->role == 'User')
-            @if(auth()->user()->registered == 0)
-                <section id="daftar" class="daftar">
-                    <div class="container" data-aos="fade-up">
-                        <div class="section-header">
-                            <h2>Daftar Segera</h2>
-                            <p>Daftarkan diri kamu melalui form dibawah ini!</p>
-                        </div>
-
-                        <div class="pagetitle">
-                            <h1>Form Pendaftaran</h1>
-                            <nav>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#daftar">Daftar</a></li>
-                                    <li class="breadcrumb-item">Home</li>
-                                </ol>
-                            </nav>
-                        </div><!-- End Page Title -->
-
-                        <section class="section">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Formulir Pendaftaran</h5>
-                                            <!-- Form Pendaftaran -->
-                                            <form action="{{ route('pendaftar.store') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="row mb-3">
-                                                    <label for="name" class="col-sm-4 col-form-label">Nama
-                                                        Lengkap</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nama" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nisn" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="tanggal_lahir" class="col-sm-4 col-form-label">Tanggal
-                                                        Lahir</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="date" class="form-control" name="tanggal_lahir"
-                                                            required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="alamat_lengkap" class="col-sm-4 col-form-label">Alamat
-                                                        Lengkap</label>
-                                                    <div class="col-sm-8">
-                                                        <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="nama_orangtua" class="col-sm-4 col-form-label">Nama
-                                                        Orangtua</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nama_orangtua"
-                                                            required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="asal_sekolah" class="col-sm-4 col-form-label">Asal
-                                                        Sekolah</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="asal_sekolah"
-                                                            required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 1</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nilai_raport_s1"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 2</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nilai_raport_s2"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 3</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nilai_raport_s3"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 4</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nilai_raport_s4"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="nilai_raport" class="col-sm-4 col-form-label">Nilai Raport Semester 5</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="nilai_raport_s5"
-                                                            required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="file_raport" class="col-sm-4 col-form-label">File
-                                                        Raport</label>
-                                                    <div class="col-sm-8">
-                                                        <input class="form-control" type="file" id="formFile"
-                                                            name="file_raport" required>
-                                                        <div class="form-text">Upload PDF / Lampiran Raport Kamu</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3 p-2">
-                                                    <button type="submit" class="btn btn-primary">Submit Pendaftaran</button>
-                                                </div>
-
-                                            </form><!-- End Form Pendaftaran -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-danger"> Pemberitahuan!</h5>
-                                            <h6 class="text-danger">Mohon lengkapi dan cek data anda dengan seksama!</h6>
-                                            <ol>
-                                                <li>Kesalahan dalam penginputan data atau terdapat data yang tidak sesuai dapat berupa penolakan !</li>
-                                                <li>Pemalsuan data dapat berupa blacklist dalam pendaftaran</li>
-                                            </ol>
-                                        </div>
+        @if (Auth::check() == false)
+            <section id="daftar" class="daftar">
+                <div class="container" data-aos="fade-up">
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <center>
+                                            <h5 class="card-title text-danger"> Pendaftaran Telah Dibuka!</h5>
+                                            <h6 class="text-danger">Kamu Ingin mendaftar? Buat Akun terlebih dahulu!
+                                            </h6>
+                                            <a class="btn btn-primary mt-3" href="{{ route('register') }}">Buat
+                                                Akun</a>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </div>
-                </section>
-            @endif
+                        </div>
+                    </section>
+                </div>
+            </section>
         @else
-        <section id="daftar" class="daftar">
-            <div class="container" data-aos="fade-up">
-                <section class="section">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <center>
-                                        <h5 class="card-title text-danger"> Pendaftaran Telah Dibuka!</h5>
-                                        <h6 class="text-danger">Kamu Ingin mendaftar? Buat Akun terlebih dahulu!</h6>
-                                        <a class="btn btn-primary mt-3" href="{{ route('register') }}" >Buat Akun</a>
-                                    </center>
+            @if (Auth::check() && auth()->user()->role == 'User')
+                @if (auth()->user()->registered == 0)
+                    <section id="daftar" class="daftar">
+                        <div class="container" data-aos="fade-up">
+                            @if (session('message'))
+                                <div class="alert alert-success alert-dismissible fade show">
+                                    {{ session('message') }}
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
+                                    </button>
+                                </div>
+                            @endif
+                            <div class="section-header">
+                                <h2>Daftar Segera</h2>
+                                <p>Daftarkan diri kamu melalui form dibawah ini!</p>
+                            </div>
+
+                            <div class="pagetitle">
+                                <h1>Form Pendaftaran</h1>
+                                <nav>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#daftar">Daftar</a></li>
+                                        <li class="breadcrumb-item">Home</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#profile-overview">Biodata Diri</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nilai-raport">Data
+                                        Wali</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">Pas Foto,
+                                        Ijazah/SKL</button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                {{-- Form Data Akademik --}}
+                                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                    @if ($datadiri->count() == 0)
+                                        <section class="section">
+                                            <div class="row">
+                                                <div class="col-lg-9">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Formulir Data Diri</h5>
+                                                            <!-- Form Pendaftaran -->
+                                                            <form action="{{ route('pendaftar.store') }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="row mb-3">
+                                                                    <label for="name"
+                                                                        class="col-sm-4 col-form-label">Nama
+                                                                        Lengkap</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nama" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="nisn"
+                                                                        class="col-sm-4 col-form-label">NISN</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nisn" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="tanggal_lahir"
+                                                                        class="col-sm-4 col-form-label">Tanggal
+                                                                        Lahir</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="date" class="form-control"
+                                                                            name="tanggal_lahir" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="alamat_lengkap"
+                                                                        class="col-sm-4 col-form-label">Alamat
+                                                                        Lengkap</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="nama_orangtua"
+                                                                        class="col-sm-4 col-form-label">Nama
+                                                                        Orangtua</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nama_orangtua" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="asal_sekolah"
+                                                                        class="col-sm-4 col-form-label">Asal
+                                                                        Sekolah</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="asal_sekolah" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="nilai_raport"
+                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        Semester 1</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nilai_raport_s1" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="nilai_raport"
+                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        Semester 2</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nilai_raport_s2" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="nilai_raport"
+                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        Semester 3</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nilai_raport_s3" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="nilai_raport"
+                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        Semester 4</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nilai_raport_s4" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="nilai_raport"
+                                                                        class="col-sm-4 col-form-label">Nilai Raport
+                                                                        Semester 5</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nilai_raport_s5" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="file_raport"
+                                                                        class="col-sm-4 col-form-label">File
+                                                                        Raport</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input class="form-control" type="file"
+                                                                            id="formFile" name="file_raport"
+                                                                            required>
+                                                                        <div class="form-text">Upload PDF / Lampiran
+                                                                            Raport Kamu</div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3 p-2">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Submit
+                                                                        Pendaftaran</button>
+                                                                </div>
+
+                                                            </form><!-- End Form Pendaftaran -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                                            <h6 class="text-danger">Mohon lengkapi dan cek data anda
+                                                                dengan seksama!</h6>
+                                                            <ol>
+                                                                <li>Kesalahan dalam penginputan data atau terdapat data
+                                                                    yang tidak sesuai dapat berupa penolakan !</li>
+                                                                <li>Pemalsuan data dapat berupa blacklist dalam
+                                                                    pendaftaran</li>
+                                                            </ol>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    @else
+                                        <section id="daftar" class="daftar">
+                                            <div class="container" data-aos="fade-up">
+                                                <section class="section">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <center>
+                                                                        <h5 class="card-title text-success"> Data Diri
+                                                                            Telah Diterima</h5>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </section>
+                                    @endif
+                                </div>
+                                {{-- Form Data Wali --}}
+                                <div class="tab-pane fade profile-edit" id="nilai-raport">
+                                    @if ($wali->count() == 0)
+                                        <section class="section">
+                                            <div class="row">
+                                                <div class="col-lg-9">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Formulir Data OrangTua/Wali</h5>
+                                                            <!-- Form Pendaftaran -->
+                                                            <form action="{{ route('wali.store') }}" method="POST">
+                                                                @csrf
+                                                                <div class="row mb-3">
+                                                                    <label for="nama_wali"
+                                                                        class="col-sm-4 col-form-label">Nama
+                                                                        OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nama_wali" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="pekerjaan_wali"
+                                                                        class="col-sm-4 col-form-label">Pekerjaan
+                                                                        OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="pekerjaan_wali" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="alamat_wali"
+                                                                        class="col-sm-4 col-form-label">Alamat
+                                                                        Lengkap OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea class="form-control" style="height: 100px" name="alamat_wali" required></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="penghasilan_wali"
+                                                                        class="col-sm-4 col-form-label">Penghasilan
+                                                                        OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="penghasilan_wali" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="nohp_wali"
+                                                                        class="col-sm-4 col-form-label">Nomor Hp
+                                                                        OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="nohp_wali" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3">
+                                                                    <label for="status_wali"
+                                                                        class="col-sm-4 col-form-label">Status
+                                                                        OrangTua/Wali</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control"
+                                                                            name="status_wali" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3 p-2">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Submit
+                                                                        Pendaftaran</button>
+                                                                </div>
+
+                                                            </form><!-- End Form Pendaftaran -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                                            <h6 class="text-danger">Mohon lengkapi dan cek data anda
+                                                                dengan seksama!</h6>
+                                                            <ol>
+                                                                <li>Kesalahan dalam penginputan data atau terdapat data
+                                                                    yang tidak sesuai dapat berupa penolakan !</li>
+                                                                <li>Pemalsuan data dapat berupa blacklist dalam
+                                                                    pendaftaran</li>
+                                                            </ol>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    @else
+                                        <section id="daftar" class="daftar">
+                                            <div class="container" data-aos="fade-up">
+                                                <section class="section">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <center>
+                                                                        <h5 class="card-title text-success"> Data Wali
+                                                                            Telah Diterima</h5>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </section>
+                                    @endif
+                                </div>
+                                {{-- Form Pas Foto dan Ijazah/SKL --}}
+                                <div class="tab-pane fade profile-edit" id="raport">
+                                    @if ($ijazah->count() == 0)
+                                        <section class="section">
+                                            <div class="row">
+                                                <div class="col-lg-9">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Formulir Pas Foto, Ijazah/SKL</h5>
+                                                            <!-- Form Pendaftaran -->
+                                                            <form action="{{ route('ijazah.store') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="row mb-3">
+                                                                    <label for="pas_foto"
+                                                                        class="col-sm-4 col-form-label">File
+                                                                        Pas Foto</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input class="form-control" type="file"
+                                                                            id="formFile" name="pas_foto" required>
+                                                                        <div class="form-text">Upload Pas Foto Kamu
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="file_ijazah"
+                                                                        class="col-sm-4 col-form-label">File
+                                                                        Ijzah/SKL</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input class="form-control" type="file"
+                                                                            id="formFile" name="file_ijazah"
+                                                                            required>
+                                                                        <div class="form-text">Upload File Ijzah/SKL
+                                                                            Kamu</div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row mb-3 p-2">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Submit
+                                                                        Pendaftaran</button>
+                                                                </div>
+
+                                                            </form><!-- End Form Pendaftaran -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                                            <h6 class="text-danger">Mohon lengkapi dan cek data anda
+                                                                dengan seksama!</h6>
+                                                            <ol>
+                                                                <li>Kesalahan dalam penginputan data atau terdapat data
+                                                                    yang tidak sesuai dapat berupa penolakan !</li>
+                                                                <li>Pemalsuan data dapat berupa blacklist dalam
+                                                                    pendaftaran</li>
+                                                            </ol>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    @else
+                                        <section id="daftar" class="daftar">
+                                            <div class="container" data-aos="fade-up">
+                                                <section class="section">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <center>
+                                                                        <h5 class="card-title text-danger"> Data Ijazah
+                                                                            Telah Diterima</h5>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </section>
+                                    @endif
                                 </div>
                             </div>
+
                         </div>
-                    </div>
-                </section>
-            </div>
-        </section>
+                    </section>
+                @endif
+            @endif
         @endif
+
         <!-- ======= Clients Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="zoom-out">
@@ -361,7 +638,8 @@
                 <div class="row gy-4">
                     <div class="col-lg-6">
                         <h3>Voluptatem dignissimos provident quasi corporis</h3>
-                        <img src="{{ asset('Impact') }}/assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+                        <img src="{{ asset('Impact') }}/assets/img/about.jpg" class="img-fluid rounded-4 mb-4"
+                            alt="">
                         <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat
                             debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur
                             fugiat voluptas ea.</p>
@@ -394,7 +672,8 @@
                             </p>
 
                             <div class="position-relative mt-4">
-                                <img src="{{ asset('Impact') }}/assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                                <img src="{{ asset('Impact') }}/assets/img/about-2.jpg" class="img-fluid rounded-4"
+                                    alt="">
                                 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
                             </div>
                         </div>

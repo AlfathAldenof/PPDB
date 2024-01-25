@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IjazahStudent;
 use App\Models\ParticipantStudent;
 use App\Models\Pendaftar;
+use App\Models\WaliStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +18,9 @@ class SiswaController extends Controller
     public function index()
     {
         $userRelatedData = ParticipantStudent::where('user_id', Auth::id())->get();
-        return view('dashboard.user.status-pendaftaran', compact('userRelatedData'));
+        $wali = WaliStudent::where('user_id', Auth::id())->get();
+        $ijazah = IjazahStudent::where('user_id', Auth::id())->get();
+        return view('dashboard.user.status-pendaftaran', compact('userRelatedData', 'wali', 'ijazah'));
     }
 
     /**
