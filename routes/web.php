@@ -32,15 +32,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::post('/pendaftar/create', [ParticipantsController::class, 'store'])->name('pendaftar.store');
     Route::post('/pendaftar/create-wali', [ParticipantsController::class, 'waliStore'])->name('wali.store');
     Route::post('/pendaftar/create-ijazah', [ParticipantsController::class, 'ijazahStore'])->name('ijazah.store');
-
+    
     Route::prefix('admin')->middleware(['auth', 'role:Admin'])->group(function () {
         //Pendaftar
         Route::get('/pendaftar', [ParticipantsController::class, 'index'])->name('pendaftar');
         Route::post('/pendaftar/{id}/update-status-diterima', [ParticipantsController::class, 'updateStatusDiterima']);
         Route::post('/pendaftar/{id}/update-status-ditolak', [ParticipantsController::class, 'updateStatusDitolak']);
         Route::get('/pendaftar/{id}/edit', [ParticipantsController::class,'edit'])->name('pendaftar.edit');
-        Route::put('/pendaftar/{id}', [ParticipantsController::class,'update'])->name('pendaftar.update');
         Route::get('/pendaftar/{id}/show', [ParticipantsController::class,'show'])->name('pendaftar.show');
+        Route::put('/pendaftar/{id}', [ParticipantsController::class,'update'])->name('pendaftar.update');
         Route::delete('/pendaftar/{id}/delete', [ParticipantsController::class, 'destroy'])->name('pendaftar.destroy');
     });
 
@@ -48,6 +48,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::get('/pendaftaran/status', [SiswaController::class, 'index'])->name('siswa.status');
         Route::get('/pendaftaran/{id}/edit', [SiswaController::class,'edit'])->name('siswa.edit');
         Route::put('/pendaftaran/{id}', [SiswaController::class,'update'])->name('siswa.update');
+        Route::put('/wali/{id}', [LandingController::class,'updateWali'])->name('wali.update');
     });
 });
 

@@ -392,6 +392,161 @@
                                             </div>
                                         </section>
                                     @else
+                                    <section class="section">
+                                        <div class="row">
+                                            <div class="col-lg-9">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Formulir Data Diri</h5>
+                                                        <!-- Form Pendaftaran -->
+                                                        <form action="{{ route('siswa.update', $item->id) }}"
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="row mb-3">
+                                                                <label for="name"
+                                                                    class="col-sm-4 col-form-label">Nama
+                                                                    Lengkap</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" value="{{ $item->nama }}" class="form-control"
+                                                                        name="nama" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="nisn"
+                                                                    class="col-sm-4 col-form-label">NISN</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" value="{{ $item->nisn }}" class="form-control"
+                                                                        name="nisn" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="tanggal_lahir"
+                                                                    class="col-sm-4 col-form-label">Tanggal
+                                                                    Lahir</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="date" class="form-control"
+                                                                        name="tanggal_lahir" value="{{ $item->tanggal_lahir }}" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="alamat_lengkap"
+                                                                    class="col-sm-4 col-form-label">Alamat
+                                                                    Lengkap</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control" style="height: 100px" name="alamat_lengkap" required>{{ $item->alamat_lengkap }}</textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="nama_orangtua"
+                                                                    class="col-sm-4 col-form-label">Nama
+                                                                    Orangtua</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" value="{{ $item->nama_orangtua }}" class="form-control"
+                                                                        name="nama_orangtua" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="asal_sekolah"
+                                                                    class="col-sm-4 col-form-label">Asal
+                                                                    Sekolah</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control"
+                                                                        name="asal_sekolah" value="{{ $item->asal_sekolah }}" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="nilai_raport"
+                                                                    class="col-sm-4 col-form-label">Nilai Raport
+                                                                    Semester 1</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="nilai_raport_s1" value="{{ $item->nilai_raport_s1 }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="nilai_raport"
+                                                                    class="col-sm-4 col-form-label">Nilai Raport
+                                                                    Semester 2</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="nilai_raport_s2" value="{{ $item->nilai_raport_s2 }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="nilai_raport"
+                                                                    class="col-sm-4 col-form-label">Nilai Raport
+                                                                    Semester 3</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="nilai_raport_s3" value="{{ $item->nilai_raport_s3 }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="nilai_raport"
+                                                                    class="col-sm-4 col-form-label">Nilai Raport
+                                                                    Semester 4</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="nilai_raport_s4" value="{{ $item->nilai_raport_s4 }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="nilai_raport"
+                                                                    class="col-sm-4 col-form-label">Nilai Raport
+                                                                    Semester 5</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="nilai_raport_s5" value="{{ $item->nilai_raport_s5 }}" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="file_raport"
+                                                                    class="col-sm-4 col-form-label">File
+                                                                    Raport</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" type="file"
+                                                                        id="formFile" name="file_raport">
+                                                                    <div class="form-text">Upload PDF / Lampiran
+                                                                        Raport Kamu</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3 p-2">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update
+                                                                    Data</button>
+                                                            </div>
+
+                                                        </form><!-- End Form Pendaftaran -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                                        <h6 class="text-danger">Mohon lengkapi dan cek data anda
+                                                            dengan seksama!</h6>
+                                                        <ol>
+                                                            <li>Kesalahan dalam penginputan data atau terdapat data
+                                                                yang tidak sesuai dapat berupa penolakan !</li>
+                                                            <li>Pemalsuan data dapat berupa blacklist dalam
+                                                                pendaftaran</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                         <section id="daftar" class="daftar">
                                             <div class="container" data-aos="fade-up">
                                                 <section class="section">
@@ -458,7 +613,7 @@
                                                                         class="col-sm-4 col-form-label">Penghasilan
                                                                         OrangTua/Wali</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             name="penghasilan_wali" required>
                                                                     </div>
                                                                 </div>
@@ -512,6 +667,103 @@
                                             </div>
                                         </section>
                                     @else
+                                    <section class="section">
+                                        <div class="row">
+                                            <div class="col-lg-9">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Formulir Data OrangTua/Wali</h5>
+                                                        <!-- Form Pendaftaran -->
+                                                        <form action="{{ route('wali.update', Auth::user()->waliStudent->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="row mb-3">
+                                                                <label for="nama_wali"
+                                                                    class="col-sm-4 col-form-label">Nama
+                                                                    OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control"
+                                                                        name="nama_wali" value="{{ Auth::user()->waliStudent->nama_wali }}" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="pekerjaan_wali"
+                                                                    class="col-sm-4 col-form-label">Pekerjaan
+                                                                    OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control"
+                                                                        name="pekerjaan_wali" value="{{ Auth::user()->waliStudent->pekerjaan_wali }}" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="alamat_wali"
+                                                                    class="col-sm-4 col-form-label">Alamat
+                                                                    Lengkap OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control" style="height: 100px" name="alamat_wali" required>{{ Auth::user()->waliStudent->alamat_wali }}</textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="penghasilan_wali"
+                                                                    class="col-sm-4 col-form-label">Penghasilan
+                                                                    OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control"
+                                                                        name="penghasilan_wali" required value="{{ Auth::user()->waliStudent->penghasilan_wali }}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="nohp_wali"
+                                                                    class="col-sm-4 col-form-label">Nomor Hp
+                                                                    OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control"
+                                                                        name="nohp_wali" required value="{{ Auth::user()->waliStudent->nohp_wali }}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
+                                                                <label for="status_wali"
+                                                                    class="col-sm-4 col-form-label">Status
+                                                                    OrangTua/Wali</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control"
+                                                                        name="status_wali" required value="{{ Auth::user()->waliStudent->status_wali }}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3 p-2">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update
+                                                                    Pendaftaran</button>
+                                                            </div>
+
+                                                        </form><!-- End Form Pendaftaran -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-danger"> Pemberitahuan!</h5>
+                                                        <h6 class="text-danger">Mohon lengkapi dan cek data anda
+                                                            dengan seksama!</h6>
+                                                        <ol>
+                                                            <li>Kesalahan dalam penginputan data atau terdapat data
+                                                                yang tidak sesuai dapat berupa penolakan !</li>
+                                                            <li>Pemalsuan data dapat berupa blacklist dalam
+                                                                pendaftaran</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                         <section id="daftar" class="daftar">
                                             <div class="container" data-aos="fade-up">
                                                 <section class="section">
