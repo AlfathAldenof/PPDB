@@ -5,6 +5,7 @@ use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
 use App\Models\ParticipantStudent;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/datadiri', function () {
+    return view('datadiri');
+});
+
+Route::post('/datadiri', function (Request $request) {
+    $data = $request->all();
+    dd($data);
+})->name('datadiri');
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
